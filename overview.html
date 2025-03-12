@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkSabio - Stocks Simplified</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card {
+            width: 100%;
+            max-width: 280px;
+            height: 260px;
+            background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+            border-radius: 20px;
+            transition: all .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card2 {
+            width: 95%;
+            height: 95%;
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            transition: all .2s;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card2:hover {
+            transform: scale(0.98);
+            border-radius: 20px;
+        }
+        .card:hover {
+            box-shadow: 0px 0px 35px 2px rgba(0, 255, 117, 0.35);
+        }
+        .text-blue-400 {
+            --tw-text-opacity: 1;
+            color: green;
+        }
+        .bg-blue-600 {
+            --tw-bg-opacity: 1;
+            background-color: rgb(26, 189, 80);
+        }
+		.w-16 
+		 {
+            width: 15rem;
+        }
+        
+
+        .feature-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .feature-image:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .feature-image {
+                max-width: 100%;
+            }
+        }
+
+        .button {
+            --color: #00A97F;
+            padding: 0.8em 1.7em;
+            background-color: transparent;
+            border-radius: .3em;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .5s;
+            font-weight: 400;
+            font-size: 17px;
+            border: 1px solid;
+            font-family: inherit;
+            text-transform: uppercase;
+            color: var(--color);
+            z-index: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button::before, .button::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            background-color: var(--color);
+            transition: 1s ease;
+        }
+
+        .button::before {
+            top: -1em;
+            left: -1em;
+        }
+
+        .button::after {
+            left: calc(100% + 1em);
+            top: calc(100% + 1em);
+        }
+
+        .button:hover::before, .button:hover::after {
+            height: 410px;
+            width: 410px;
+        }
+
+        .button:hover {
+            color: rgb(10, 25, 30);
+        }
+
+        .button:active {
+            filter: brightness(.8);
+        }
+/* Navigation and Layout */
+        .nav-container {
+            width: 100%;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+    
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .nav-logo {
+            flex-shrink: 0;
+            margin-right: 2rem;
+        }
+
+        .nav-logo img {
+            width: 17rem;
+        }
+    
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            min-width: 200px;
+            border-radius: 8px;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    
+        .main-content {
+            margin-top: 120px;
+            padding: 0 2rem;
+        }
+    
+        .back-button-container {
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+    
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+    
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+    
+            .nav-logo img {
+                width: 12rem;
+            }
+    
+            .main-content {
+                margin-top: 160px;
+            }
+        }
+        .btn {
+            padding: 1.1em 2em;
+            background: none;
+            border: 2px solid #fff;
+            font-size: 15px;
+            color: #131313;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            border-radius: 12px;
+            background-color: #ecd448;
+            font-weight: bolder;
+            box-shadow: 0 2px 0 2px #000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    
+        .btn:before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 120%;
+            background-color: #ff6700;
+            top: 50%;
+            transform: skewX(30deg) translate(-150%, -50%);
+            transition: all 0.5s;
+        }
+    
+        .btn:hover {
+            background-color: #4cc9f0;
+            color: #fff;
+            box-shadow: 0 2px 0 2px #0d3b66;
+        }
+    
+        .btn:hover::before {
+            transform: skewX(30deg) translate(150%, -50%);
+            transition-delay: 0.1s;
+        }
+    
+        .btn:active {
+            transform: scale(0.9);
+        }	
+        
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="C:\Users\Lenovo\Desktop\Thinksabio\landing.html" class="nav-logo">
+                <img src="https://thinksabio-asset.s3.amazonaws.com/TSLOGO.png" alt="ThinkSabio Logo">
+            </a>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="button">Who We Are</a>
+                    <div class="dropdown-content">
+                        <a href="C:\Users\Lenovo\Desktop\Thinksabio\overview.html" class="button">Overview</a>
+                        <a href="#" class="button">Blog</a>
+                        <a href="#" class="button">Our Features</a>
+                        <a href="C:\Users\Lenovo\Desktop\Thinksabio\successstories.html" class="button">Success Stories</a>
+                    </div>
+                </div>
+                <a href="#" class="button">Sign Up</a>
+                <a href="#" class="button">Login</a>
+                <a href="#" class="button">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto main-content">
+        <div class="back-button-container">
+            <button class="btn">
+                <span role="img" aria-label="arrow-left" class="anticon anticon-arrow-left"></span>
+                Go Back
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <!-- Text Content -->
+            <div class="text-content">
+                <h2 class="text-5xl font-bold text-white mb-6">
+                    What is <span class="text-green-500">ThinkSabio</span>?
+                </h2>
+                <p class="text-gray-400 text-lg mb-8">
+                    ThinkSabio is an AI-based easy-to-use stock analytical tool developed using Data Science AI & ML. We provide intelligent data insights for the Stock Market, giving access to thousands of stocks, institutional investors, and insiders.
+                </p>
+                <div class="flex space-x-4">
+                    <button class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+
+            <!-- Illustration -->
+            <div class="image-container">
+                <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/LandingPageReportSummary.png" 
+                     class="feature-image rounded-lg shadow-lg">
+            </div>
+        </div>
+
+        <!-- Features Boxes -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+            <div class="card">
+                <div class="card2">
+                    <h3 class="text-lg font-semibold text-white mb-4">Institutional-Grade Intelligence</h3>
+                    <p class="text-gray-400 text-sm">
+                        Our information comes directly from institutional investors with experts in economics, data analysis, mathematics, and artificial intelligence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card2">
+                    <h3 class="text-lg font-semibold text-white mb-4">Higher Returns</h3>
+                    <p class="text-gray-400 text-sm">
+                        ThinkSabio helps subscribers make informed stock market decisions through simplified market data that can help them get a high return on investment.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card2">
+                    <h3 class="text-lg font-semibold text-white mb-4">Follow Proven Reports</h3>
+                    <p class="text-gray-400 text-sm">
+                        By using ThinkSabio, you can follow the Unique Reports and achieve the success of the largest and most successful institutional investors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card2">
+                    <h3 class="text-lg font-semibold text-white mb-4">Proven Success</h3>
+                    <p class="text-gray-400 text-sm">
+                        We’ve many subscribers invest wisely, and we would be happy to do the same for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 text-gray-500">
+            <p>© 2025 ThinkSabio. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

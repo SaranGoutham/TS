@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkSabio - Stocks Simplified</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1e2e;
+            color: #ffffff;
+        }
+
+        /* Updated Navigation Styles */
+        .nav-container {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+    
+        .nav-logo {
+            flex-shrink: 0;
+            margin-right: auto;
+        }
+
+        .nav-logo img {
+            width: 180px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+    
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+            margin-left: 2rem;
+        }
+
+        /* Updated Button Style to match overview.html */
+        .button {
+            --color: #00A97F;
+            padding: 0.8em 1.7em;
+            background-color: transparent;
+            border-radius: .3em;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .5s;
+            font-weight: 400;
+            font-size: 17px;
+            border: 1px solid;
+            font-family: inherit;
+            text-transform: uppercase;
+            color: var(--color);
+            z-index: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button::before, .button::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            background-color: var(--color);
+            transition: 1s ease;
+        }
+
+        .button::before {
+            top: -1em;
+            left: -1em;
+        }
+
+        .button::after {
+            left: calc(100% + 1em);
+            top: calc(100% + 1em);
+        }   
+        .button {
+            --color: #00A97F;
+            padding: 0.8em 1.7em;
+            background-color: transparent;
+            border-radius: .3em;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .5s;
+            font-weight: 400;
+            font-size: 17px;
+            border: 1px solid;
+            font-family: inherit;
+            text-transform: uppercase;
+            color: var(--color);
+            z-index: 1;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover::before, .button:hover::after {
+            height: 410px;
+            width: 410px;
+        }
+
+        .button:hover {
+            color: rgb(10, 25, 30);
+        }
+
+        .button:active {
+            filter: brightness(.8);
+        }
+
+        /* Updated Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            min-width: 200px;
+            border-radius: 8px;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    
+        .main-content {
+            margin-top: 120px;
+            padding: 0 2rem;
+        }
+    
+        .back-button-container {
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+    
+        .main-content {
+            margin-top: 120px;
+            padding: 0 2rem;
+        }
+    
+        .back-button-container {
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding-top: 120px;
+            padding-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            width: 50%;
+            padding-right: 2rem;
+            box-sizing: border-box;
+        }
+
+        .hero-image {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Trial Section */
+        .trial-section {
+            background-color: #1e2130;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .trial-content {
+            width: 60%;
+        }
+
+        .trial-image {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .trial-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .get-started-btn {
+            background-color: #00cc44;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .get-started-btn:hover {
+            background-color: #00a836;
+        }
+
+        .feature-check {
+            color: #00cc44;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .feature-item {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .trial-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .green-text {
+            color: #00cc44;
+        }
+
+        .tagline {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-section, .trial-section {
+                flex-direction: column;
+            }
+            
+            .hero-content, .hero-image, .trial-content, .trial-image {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .nav-logo img {
+                width: 160px;
+            }
+
+            .button {
+                padding: 0.6em 1.4em;
+                font-size: 15px;
+            }
+
+            .nav-content {
+                padding: 0 0.75rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+            }
+
+            .nav-container {
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .nav-links {
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .nav-logo img {
+                width: 160px;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+
+            .button {
+                padding: 0.5em 1.2em;
+                font-size: 14px;
+            }
+
+            .trial-heading {
+                font-size: 2rem;
+            }
+        }
+			
+		   /* How It Works Section */
+        .how-it-works {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            box-sizing: border-box;
+            background-color: #1e2130;
+        }
+
+        .how-it-works-image {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .how-it-works-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .how-it-works-content {
+            width: 55%;
+        }
+
+        .how-it-works-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .step {
+            margin-bottom: 2rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #00cc44;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        .vertical-line {
+            width: 4px;
+            background-color: #00cc44;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .how-it-works {
+                flex-direction: column;
+            }
+            
+            .how-it-works-image, .how-it-works-content {
+                width: 100%;
+            }
+            
+            .how-it-works-image {
+                margin-bottom: 2rem;
+            }
+        }	
+
+        /* Exclusive Reports Section */
+        .exclusive-reports {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            box-sizing: border-box;
+            background-color: #1e2130;
+        }
+
+        .reports-content {
+            width: 55%;
+        }
+
+        .reports-image {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .reports-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .reports-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .report {
+            margin-bottom: 2rem;
+        }
+
+        .report-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #00cc44;
+        }
+
+        .report-description {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .vertical-line {
+            width: 4px;
+            background-color: #00cc44;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .exclusive-reports {
+                flex-direction: column;
+            }
+            
+            .reports-content, .reports-image {
+                width: 100%;
+            }
+            
+            .reports-content {
+                margin-bottom: 2rem;
+                order: 2;
+            }
+            
+            .reports-image {
+                order: 1;
+            }
+        }	    
+        	
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="C:\Users\Lenovo\Desktop\Thinksabio\landing.html" class="nav-logo">
+                <img src="https://thinksabio-asset.s3.amazonaws.com/TSLOGO.png" alt="ThinkSabio Logo">
+            </a>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="button">Who We Are</a>
+                    <div class="dropdown-content">
+                        <a href="C:\Users\Lenovo\Desktop\Thinksabio\overview.html" class="button">Overview</a>
+                        <a href="#" class="button">Blog</a>
+                        <a href="#" class="button">Our Features</a>
+                        <a href="C:\Users\Lenovo\Desktop\Thinksabio\successstories.html" class="button">Success Stories</a>
+                    </div>
+                </div>
+                <a href="#" class="button">Sign Up</a>
+                <a href="#" class="button">Login</a>
+                <a href="#" class="button">Contact Us</a>
+            </div>
+        </div>
+        
+    </nav>
+
+    <!-- Trial Section -->
+    <section class="hero-section">
+        <div class="trial-content">
+            <h1 class="trial-heading">Try a <span class="green-text">7-Day</span> Free Trial & Get Access to Data-Driven Analytical Reports!</h1>
+            
+            <div class="feature-item">
+                <span class="feature-check">✓</span> No Credit Card Required.
+            </div>
+            
+            <div class="feature-item">
+                <span class="feature-check">✓</span> Just Your Email.
+            </div>
+            
+            <button class="get-started-btn">Get Started</button>
+        </div>
+        
+        <div class="trial-image">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/stockMarketGraph.png" alt="Growth chart with figures climbing">
+        </div>
+    </section>
+
+    <div class="tagline">
+        — Gain the tools and knowledge to create the wealth you deserve.
+    </div>
+	<!-- How it Works -->
+	<section class="how-it-works">
+        <div class="how-it-works-image">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/boardIconCharacter.png" alt="Presentation figure">
+        </div>
+        <div class="how-it-works-content">
+            <h2 class="how-it-works-title">How It Works</h2>
+            
+            <div class="step">
+                <h3 class="step-title">1. Sign up in less than a minute</h3>
+                <p class="step-description">Sign up quickly and gain access to premium financial insights.</p>
+            </div>
+            
+            <div class="step">
+                <h3 class="step-title">2. Unlock exclusive institutional data</h3>
+                <p class="step-description">Track real-time investments from top institutions and hedge funds.</p>
+            </div>
+            
+            <div class="step">
+                <h3 class="step-title">3. Stay Notified on Telegram</h3>
+                <p class="step-description">Join our Thinksabio Community Telegram groups to get real-time updates.</p>
+            </div>
+        </div>
+    </section>		
+	 <!-- Exclusive Reports Section -->
+    <section class="exclusive-reports">
+        <div class="reports-content">
+            <h2 class="reports-title">Our Exclusive Reports</h2>
+            
+            <div class="report">
+                <h3 class="report-title">1. Diamonds Report</h3>
+                <p class="report-description">Identifies high-potential stocks based on institutional accumulation, price trends, and volume upswings.</p>
+            </div>
+            
+            <div class="report">
+                <h3 class="report-title">2. Ultimate Report</h3>
+                <p class="report-description">Highlights stocks with consistently increasing institutional ownership.</p>
+            </div>
+            
+            <div class="report">
+                <h3 class="report-title">3. 52 Week Low Reversal</h3>
+                <p class="report-description">Tracks stocks rebounding from their lowest price, suggesting a potential trend reversal.</p>
+            </div>
+            
+            <div class="report">
+                <h3 class="report-title">4. Mark Minervini Strategy</h3>
+                <p class="report-description">Focuses on stocks with strong earnings growth, relative strength, and technical breakouts.</p>
+            </div>
+        </div>
+        
+        <div class="reports-image">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/LandingPageReportSummary.png" alt="Report tablet and documents">
+        </div>
+    </section>	
+	
+<!-- Testimonials Section -->
+    <section class="testimonials-section" style="display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130;">
+    <div class="testimonials-content" style="width: 50%;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: bold; color: #ffffff;">ThinkSabio <br><span>   <span style="font-size: 2.2rem; margin-left: 205px;">Testimonials</span></h2>
+        <p style="color: #00cc44; font-style: italic; margin-bottom: 1rem; font-size: 1.2rem;">"Voices of Success"</p>
+    </div>
+    <div class="testimonials-video" style="width: 45%; display: flex; justify-content: center; align-items: center; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
+        <video width="100%" controls style="border-radius: 10px;">
+            <source src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    </section>
+    <!-- Smart Money Section -->
+<section class="smart-money-section" style="display: flex; align-items: center; justify-content: center; max-width: 1400px; margin: 4rem auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130; text-align: center;">
+    <button class="arrow-button" style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-right: 1rem;">
+        ←
+    </button>
+    <div class="smart-money-content" style="position: relative; display: flex; flex-direction: column; align-items: center;">
+        <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success_img/1.jpg" alt="Smart Money Image" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
+        <h2 style="color: #ffffff; font-size: 2.5rem; margin-top: 1.5rem; font-weight: bold;">
+            <span style="color: #00cc44;">ThinkSabio</span> follows <br> <span style="font-size: 2.2rem;">Smart Money</span>
+        </h2>
+    </div>
+    <button class="arrow-button" style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-left: 1rem;">
+        →
+    </button>
+</section> 
+</body>
+</html>
