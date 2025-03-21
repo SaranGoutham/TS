@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1e2e;
+            background-color: #1e2130;
             color: #ffffff;
         }
 
@@ -27,7 +28,7 @@
             box-sizing: border-box;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-    
+
         .nav-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -36,7 +37,7 @@
             align-items: center;
             padding: 0 1rem;
         }
-    
+
         .nav-logo {
             flex-shrink: 0;
             margin-right: auto;
@@ -47,7 +48,7 @@
             height: auto;
             transition: width 0.3s ease;
         }
-    
+
         .nav-links {
             display: flex;
             gap: 1.5rem;
@@ -78,7 +79,8 @@
             display: inline-block;
         }
 
-        .button::before, .button::after {
+        .button::before,
+        .button::after {
             content: '';
             display: block;
             width: 50px;
@@ -99,7 +101,8 @@
         .button::after {
             left: calc(100% + 1em);
             top: calc(100% + 1em);
-        }   
+        }
+
         .button {
             --color: #00A97F;
             padding: 0.8em 1.7em;
@@ -120,7 +123,8 @@
             display: inline-block;
         }
 
-        .button:hover::before, .button:hover::after {
+        .button:hover::before,
+        .button:hover::after {
             height: 410px;
             width: 410px;
         }
@@ -157,29 +161,36 @@
             flex-direction: column;
             gap: 0.5rem;
         }
-    
+
         .main-content {
             margin-top: 120px;
             padding: 0 2rem;
         }
-    
+
         .back-button-container {
             padding: 1rem 0;
             margin-bottom: 2rem;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        
-    
+
+
         .main-content {
             margin-top: 120px;
             padding: 0 2rem;
         }
-    
+
         .back-button-container {
             padding: 1rem 0;
             margin-bottom: 2rem;
@@ -293,16 +304,21 @@
 
         /* Responsive Styles */
         @media (max-width: 1024px) {
-            .hero-section, .trial-section {
+
+            .hero-section,
+            .trial-section {
                 flex-direction: column;
             }
-            
-            .hero-content, .hero-image, .trial-content, .trial-image {
+
+            .hero-content,
+            .hero-image,
+            .trial-content,
+            .trial-image {
                 width: 100%;
                 padding-right: 0;
                 margin-bottom: 2rem;
             }
-            
+
             .nav-logo img {
                 width: 160px;
             }
@@ -315,7 +331,7 @@
             .nav-content {
                 padding: 0 0.75rem;
             }
-            
+
             .nav-links {
                 gap: 1rem;
             }
@@ -353,7 +369,7 @@
             }
 
             .nav-links {
-                display:flex;
+                display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 0.5rem;
@@ -378,8 +394,8 @@
                 font-size: 2rem;
             }
         }
-			
-		   /* How It Works Section */
+
+        /* How It Works Section */
         .how-it-works {
             display: flex;
             align-items: center;
@@ -442,15 +458,16 @@
             .how-it-works {
                 flex-direction: column;
             }
-            
-            .how-it-works-image, .how-it-works-content {
+
+            .how-it-works-image,
+            .how-it-works-content {
                 width: 100%;
             }
-            
+
             .how-it-works-image {
                 margin-bottom: 2rem;
             }
-        }	
+        }
 
         /* Exclusive Reports Section */
         .exclusive-reports {
@@ -511,29 +528,149 @@
             top: 0;
             bottom: 0;
         }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 90%;
+            max-width: 1000px;
+            background-color: #1e2130;
+          }
+      
+          /* Card styles */
+          .card {
+            background-color: #121928;
+            color: #fff;
+            border-radius: 8px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            cursor: pointer;
+            width: 60px;
+            height: 150px;
+          }
+      
+          .card:hover {
+            width: 200px;
+          }
+      
+          .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 10px;
+            height: 100%;
+          }
+      
+          .icon-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+      
+          .icon {
+            font-size: 24px;
+            margin: 0 0 0.5rem 0;
+          }
+      
+          .text {
+            display: none;
+            transition: width 0.3s ease, opacity 0.3s ease;
+          }
+      
+          .card:hover .text {
+            display: block;
+            width: auto;
+            opacity: 1;
+          }
+      
+          .title {
+            font-size: 16px;
+            font-weight: bold;
+          }
+      
+          .description {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #bbb;
+          }
+          .inherent-features-section {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .inherent-features-section h1,
+        .inherent-features-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .inherent-features-section .container {
+            justify-content: center; /* already exists */
+            margin: 0 auto;           /* center within the section */
+            flex-wrap: wrap;
+        }
+        
+          /* Responsive */
+          @media (max-width: 600px) {
+            .container {
+              flex-direction: column;
+              align-items: center;
+            }
+      
+            .card {
+              width: 100%;
+              max-width: 300px;
+              height: 60px;
+            }
+      
+            .card:hover {
+              height: 100px;
+              width: 100%;
+            }
+      
+            .text {
+              width: 100%;
+              opacity: 1;
+              height: 0;
+              transition: height 0.3s ease, opacity 0.3s ease;
+            }
+      
+            .card:hover .text {
+              height: auto;
+            }
+          }
 
         /* Responsive Styles */
         @media (max-width: 1024px) {
             .exclusive-reports {
                 flex-direction: column;
             }
-            
-            .reports-content, .reports-image {
+
+            .reports-content,
+            .reports-image {
                 width: 100%;
             }
-            
+
             .reports-content {
                 margin-bottom: 2rem;
                 order: 2;
             }
-            
+
             .reports-image {
                 order: 1;
             }
-        }	    
-        	
+        }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="nav-container">
@@ -556,117 +693,255 @@
                 <a href="#" class="button">Contact Us</a>
             </div>
         </div>
-        
+
     </nav>
 
     <!-- Trial Section -->
     <section class="hero-section">
         <div class="trial-content">
-            <h1 class="trial-heading">Try a <span class="green-text">7-Day</span> Free Trial & Get Access to Data-Driven Analytical Reports!</h1>
-            
+            <h1 class="trial-heading">Try a <span class="green-text">7-Day</span> Free Trial & Get Access to Data-Driven
+                Analytical Reports!</h1>
+
             <div class="feature-item">
                 <span class="feature-check">✓</span> No Credit Card Required.
             </div>
-            
+
             <div class="feature-item">
                 <span class="feature-check">✓</span> Just Your Email.
             </div>
-            
+
             <button class="get-started-btn">Get Started</button>
         </div>
-        
+
         <div class="trial-image">
-            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/stockMarketGraph.png" alt="Growth chart with figures climbing">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/stockMarketGraph.png"
+                alt="Growth chart with figures climbing">
         </div>
     </section>
 
     <div class="tagline">
         — Gain the tools and knowledge to create the wealth you deserve.
     </div>
-	<!-- How it Works -->
-	<section class="how-it-works">
+    <!-- How it Works -->
+    <section class="how-it-works">
         <div class="how-it-works-image">
-            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/boardIconCharacter.png" alt="Presentation figure">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/boardIconCharacter.png"
+                alt="Presentation figure">
         </div>
         <div class="how-it-works-content">
             <h2 class="how-it-works-title">How It Works</h2>
-            
+
             <div class="step">
                 <h3 class="step-title">1. Sign up in less than a minute</h3>
                 <p class="step-description">Sign up quickly and gain access to premium financial insights.</p>
             </div>
-            
+
             <div class="step">
                 <h3 class="step-title">2. Unlock exclusive institutional data</h3>
                 <p class="step-description">Track real-time investments from top institutions and hedge funds.</p>
             </div>
-            
+
             <div class="step">
                 <h3 class="step-title">3. Stay Notified on Telegram</h3>
                 <p class="step-description">Join our Thinksabio Community Telegram groups to get real-time updates.</p>
             </div>
         </div>
-    </section>		
-	 <!-- Exclusive Reports Section -->
+    </section>
+    <!-- Exclusive Reports Section -->
     <section class="exclusive-reports">
         <div class="reports-content">
             <h2 class="reports-title">Our Exclusive Reports</h2>
-            
+
             <div class="report">
                 <h3 class="report-title">1. Diamonds Report</h3>
-                <p class="report-description">Identifies high-potential stocks based on institutional accumulation, price trends, and volume upswings.</p>
+                <p class="report-description">Identifies high-potential stocks based on institutional accumulation,
+                    price trends, and volume upswings.</p>
             </div>
-            
+
             <div class="report">
                 <h3 class="report-title">2. Ultimate Report</h3>
-                <p class="report-description">Highlights stocks with consistently increasing institutional ownership.</p>
+                <p class="report-description">Highlights stocks with consistently increasing institutional ownership.
+                </p>
             </div>
-            
+
             <div class="report">
                 <h3 class="report-title">3. 52 Week Low Reversal</h3>
-                <p class="report-description">Tracks stocks rebounding from their lowest price, suggesting a potential trend reversal.</p>
+                <p class="report-description">Tracks stocks rebounding from their lowest price, suggesting a potential
+                    trend reversal.</p>
             </div>
-            
+
             <div class="report">
                 <h3 class="report-title">4. Mark Minervini Strategy</h3>
-                <p class="report-description">Focuses on stocks with strong earnings growth, relative strength, and technical breakouts.</p>
+                <p class="report-description">Focuses on stocks with strong earnings growth, relative strength, and
+                    technical breakouts.</p>
             </div>
         </div>
-        
+
         <div class="reports-image">
-            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/LandingPageReportSummary.png" alt="Report tablet and documents">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/LandingPageReportSummary.png"
+                alt="Report tablet and documents">
         </div>
-    </section>	
-	
-<!-- Testimonials Section -->
-    <section class="testimonials-section" style="display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130;">
-    <div class="testimonials-content" style="width: 50%;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: bold; color: #ffffff;">ThinkSabio <br><span>   <span style="font-size: 2.2rem; margin-left: 205px;">Testimonials</span></h2>
-        <p style="color: #00cc44; font-style: italic; margin-bottom: 1rem; font-size: 1.2rem;">"Voices of Success"</p>
+    </section>
+
+
+    <!-- Inherit features -->
+    <section class="inherent-features-section">
+        <h1>Inherent Features Of ThinkSabio</h1>
+        <h2>Join <span style="color: #00cc44;">ThinkSabio</span> now for unlimited 24/7/365 access to:</h2>
+
+
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <div class="icon-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined">
+                        <path d="M12 16v5" />
+                        <path d="M16 14v7" />
+                        <path d="M20 10v11" />
+                        <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" />
+                        <path d="M4 18v3" />
+                        <path d="M8 14v7" />
+                    </svg>
+                    <span style="color: #00cc44;">Stock Prices</span>
+                </div>
+                <div class="text">
+                    <div class="title">7,300+</div>
+                    <div class="description">Stock prices and their trends</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="icon-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-megaphone">
+                        <path d="m3 11 18-5v12L3 14v-3z" />
+                        <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                    </svg>
+                    <span style="color: #00cc44;">Statistical Report</span>
+                </div>
+                <div class="text">
+                    <div class="title">7,300+</div>
+                    <div class="description">Individual Statistical Report and forecast for each stock</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="icon-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-network">
+                        <rect x="16" y="16" width="6" height="6" rx="1" />
+                        <rect x="2" y="16" width="6" height="6" rx="1" />
+                        <rect x="9" y="2" width="6" height="6" rx="1" />
+                        <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+                        <path d="M12 12V8" />
+                    </svg>
+                    <span style="color: #00cc44;">Techincal Analysis</span>
+                </div>
+                <div class="text">
+                    <div class="title">40</div>
+                    <div class="description">Technical analysis methods for best stocks</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="icon-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-chart-candlestick">
+                        <path d="M9 5v4" />
+                        <rect width="4" height="6" x="7" y="9" rx="1" />
+                        <path d="M9 15v2" />
+                        <path d="M17 3v2" />
+                        <rect width="4" height="8" x="15" y="5" rx="1" />
+                        <path d="M17 13v3" />
+                        <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                    </svg>
+                    <span style="color: #00cc44;">SEC</span>
+                </div>
+                <div class="text">
+                    <div class="title">12,300+</div>
+                    <div class="description">Institution's quarterly, daily stock holdings from SEC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="icon-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-hand-coins">
+                        <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                        <path
+                            d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                        <path d="m2 16 6 6" />
+                        <circle cx="16" cy="9" r="2.9" />
+                        <circle cx="6" cy="5" r="3" />
+                    </svg>
+                    <span style="color: #00cc44;">Insiders</span>
+                </div>
+                <div class="text">
+                    <div class="title">17,800+</div>
+                    <div class="description">Insider's buying/selling information from SEC</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="testimonials-video" style="width: 45%; display: flex; justify-content: center; align-items: center; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
-        <video width="100%" controls style="border-radius: 10px;">
-            <source src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+</section>
+
+
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section"
+        style="display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130;">
+        <div class="testimonials-content" style="width: 50%;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: bold; color: #ffffff;">ThinkSabio <br><span>
+                    <span style="font-size: 2.2rem; margin-left: 205px;">Testimonials</span></h2>
+            <p style="color: #00cc44; font-style: italic; margin-bottom: 1rem; font-size: 1.2rem;">"Voices of Success"
+            </p>
+        </div>
+        <div class="testimonials-video"
+            style="width: 45%; display: flex; justify-content: center; align-items: center; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
+            <video width="100%" controls style="border-radius: 10px;">
+                <source src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </section>
     <!-- Smart Money Section -->
-<section class="smart-money-section" style="display: flex; align-items: center; justify-content: center; max-width: 1400px; margin: 4rem auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130; text-align: center;">
-    <button class="arrow-button" style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-right: 1rem;">
-        ←
-    </button>
-    <div class="smart-money-content" style="position: relative; display: flex; flex-direction: column; align-items: center;">
-        <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success_img/1.jpg" alt="Smart Money Image" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
-        <h2 style="color: #ffffff; font-size: 2.5rem; margin-top: 1.5rem; font-weight: bold;">
-            <span style="color: #00cc44;">ThinkSabio</span> follows <br> <span style="font-size: 2.2rem;">Smart Money</span>
-        </h2>
-    </div>
-    <button class="arrow-button" style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-left: 1rem;">
-        →
-    </button>
-</section> 
-	<script> window.chtlConfig = { chatbotId: "1516136643" } </script>
-<script async data-id="1516136643" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <section class="smart-money-section"
+        style="display: flex; align-items: center; justify-content: center; max-width: 1400px; margin: 4rem auto; padding: 4rem 2rem; box-sizing: border-box; background-color: #1e2130; text-align: center;">
+        <button class="arrow-button"
+            style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-right: 1rem;">
+            ←
+        </button>
+        <div class="smart-money-content"
+            style="position: relative; display: flex; flex-direction: column; align-items: center;">
+            <img src="https://thinksabio-asset.s3.us-east-1.amazonaws.com/success_img/1.jpg" alt="Smart Money Image"
+                style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);">
+            <h2 style="color: #ffffff; font-size: 2.5rem; margin-top: 1.5rem; font-weight: bold;">
+                <span style="color: #00cc44;">ThinkSabio</span> follows <br> <span style="font-size: 2.2rem;">Smart
+                    Money</span>
+            </h2>
+        </div>
+        <button class="arrow-button"
+            style="background-color: #00cc44; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin-left: 1rem;">
+            →
+        </button>
+    </section>
+    <script> window.chtlConfig = { chatbotId: "1516136643" } </script>
+    <script async data-id="1516136643" id="chatling-embed-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
+
 </html>
